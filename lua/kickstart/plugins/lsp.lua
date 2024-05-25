@@ -137,7 +137,7 @@ return {
       --        For example, to see the options for `lua_ls`, you could go to: https://luals.github.io/wiki/settings/
       local servers = {
         clangd = {},
-        gopls = {},
+        -- gopls = {},
         -- pyright = {},
         rust_analyzer = {
         },
@@ -149,7 +149,7 @@ return {
         -- But for many setups, the LSP (`tsserver`) will work just fine
         tsserver = {},
         svelte = {},
-        --
+        cmake = {},
 
         lua_ls = {
           -- cmd = {...},
@@ -184,6 +184,8 @@ return {
         'clangd',
         'clang-format',
         'gopls',
+        'gofumpt',
+        'golines',
         'rust_analyzer',
         'eslint',
         'lua_ls',
@@ -195,8 +197,6 @@ return {
         'tailwindcss',
         'cmake',
         'zls',
-        'gofumpt',
-        'golines',
         'prettier',
         'prettierd',
       })
