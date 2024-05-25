@@ -1,5 +1,33 @@
-vim.keymap.set('n', '<Esc>', '<cmd>nohlsearch<CR>')
-vim.keymap.set('n', '<leader>pv', ':Ex<CR>', { desc = 'Goto Netrw' })
+local Remap = {}
+
+local function bind(op, outer_opts)
+  outer_opts = outer_opts or { noremap = true }
+  return function(lhs, rhs, opts)
+    opts = vim.tbl_extend('force', outer_opts, opts or {})
+    vim.keymap.set(op, lhs, rhs, opts)
+  end
+end
+
+Remap.nmap = bind('n', { noremap = false })
+Remap.nnoremap = bind 'n'
+Remap.vnoremap = bind 'v'
+Remap.xnoremap = bind 'x'
+Remap.inoremap = bind 'i'
+
+local nnoremap = Remap.nnoremap
+local vnoremap = Remap.vnoremap
+local inoremap = Remap.inoremap
+local xnoremap = Remap.xnoremap
+local nmap = Remap.nmap
+
+nnoremap('<leader>pv', ':Ex<CR>')
+
+nnoremap('<leader>y', '"+y')
+vnoremap('<leader>y', '"+y')
+nmap('<leader>Y', '"+Y')
+
+nnoremap('<leader>P', '"+p')
+vnoremap('<leader>P', '"+p')
 
 -- Diagnostic keymaps
 vim.keymap.set('n', '[d', vim.diagnostic.goto_prev, { desc = 'Go to previous [D]iagnostic message' })
